@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="utf8mb4" collation="utf8mb4_general_ci">dbdigital_masjid</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="donatur" view="colnames">
+<left>261</left>
+<top>39</top>
+<width>100</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `donatur` (
+  `iddonatur` char(11) NOT NULL,
+  `nama` varchar(30) DEFAULT NULL,
+  `alamat` varchar(30) DEFAULT NULL,
+  `nohp` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`iddonatur`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci</sql_create_table>
+</table>
+<table name="kasmasjid" view="colnames">
+<left>77</left>
+<top>38</top>
+<width>138</width>
+<height>214</height>
+<sql_create_table>CREATE TABLE `kasmasjid` (
+  `idkasmasjid` int(11) NOT NULL AUTO_INCREMENT,
+  `tanggal` date DEFAULT NULL,
+  `ket` varchar(225) DEFAULT NULL,
+  `kasmasuk` double DEFAULT NULL,
+  `kaskeluar` double DEFAULT NULL,
+  `jeniskas` varchar(20) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  `iddonaturmasjid` char(11) DEFAULT NULL,
+  PRIMARY KEY (`idkasmasjid`),
+  KEY `iddonaturmasjid` (`iddonaturmasjid`),
+  CONSTRAINT `kasmasjid_ibfk_1` FOREIGN KEY (`iddonaturmasjid`) REFERENCES `donatur` (`iddonatur`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
